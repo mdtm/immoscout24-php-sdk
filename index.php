@@ -21,7 +21,7 @@ require_once('Immocaster/Sdk.php');
  */
 $sImmobilienScout24Key    = 'Key für ImmobilienScout24';
 $sImmobilienScout24Secret = 'Secret für ImmobilienScout24';
-$oImmocaster              = Immocaster_Sdk::getInstance('is24',$sImmobilienScout24Key,$sImmobilienScout24Secret);
+$oImmocaster              = Immocaster_Sdk::getInstance('is24', $sImmobilienScout24Key, $sImmobilienScout24Secret);
 
 /**
  * Verbindung zur MySql-Datenbank (wird für einige Anfragen
@@ -35,8 +35,8 @@ $oImmocaster              = Immocaster_Sdk::getInstance('is24',$sImmobilienScout
 // $oImmocaster->setDataStorage(array('mysql','DB-Host','DB-User','DB-Password','DB-Name'));
 
 /**
-* HTTPS verwenden
-*/
+ * HTTPS verwenden
+ */
 //$oImmocaster->useHttps(true);
 
 /**
@@ -48,7 +48,7 @@ $oImmocaster              = Immocaster_Sdk::getInstance('is24',$sImmobilienScout
  * Debug-Modus für Requests aktivieren
  * Zum deaktivieren: disableRequestDebug()
  */
- //$oImmocaster->enableRequestDebug();
+//$oImmocaster->enableRequestDebug();
 
 /**
  * Strict-Mode aktivieren
@@ -73,128 +73,166 @@ $oImmocaster              = Immocaster_Sdk::getInstance('is24',$sImmobilienScout
 ?>
 
 <html>
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Immocaster SDK</title>
-	<style type="text/css">
-        body { font-family: Verdana, Geneva, sans-serif; font-size: 11px; }
-        h1 { font-family: Georgia, "Times New Roman", Times, serif; font-size: 16px; font-style: italic; }
-        h2 { font-family: Georgia, "Times New Roman", Times, serif; font-size: 12px; font-style: italic; }
-        p { width: 900px; display: inline-block; }
-        textarea { width: 900px; height: 200px; margin: 10px 0; }
-		#appVerifyButton { padding: 10px; background: #CCC; border: 1px solid #666; display: inline-block; }
-		#appVerifyInfo { color:#F00; font-weight: bold; margin: 10px 0; }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Immocaster SDK</title>
+  <style type="text/css">
+    body {
+      font-family: Verdana, Geneva, sans-serif;
+      font-size: 11px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    p {
+      width: 900px;
+      display: inline-block;
+    }
+
+    textarea {
+      width: 900px;
+      height: 200px;
+      margin: 10px 0;
+    }
+
+    #appVerifyButton {
+      padding: 10px;
+      background: #CCC;
+      border: 1px solid #666;
+      display: inline-block;
+    }
+
+    #appVerifyInfo {
+      color: #F00;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+  </style>
 </head>
 
 <body>
-<h1>
-	<a href="http://www.immocaster.com">Immocaster SDK - Beispiele</a>
-</h1>
-<p>
-Das Immocaster SDK unterstützt Entwickler beim Erstellen von PHP-Applikationen mit der Schnittstelle von ImmobilienScout24. Eine
-ausführliche Dokumentation befindet sich unter <a href="http://immocaster.com/sdk-dokumentation">http://immocaster.com/sdk-dokumentation</a>. Au&szlig;erdem wird es auf der Website <a href="http://www.immocaster.com">www.immocaster.com</a> in Kürze fertige Plugins für verschiedene CMS (z.B. Wordpress, Drupal, Joomla, usw.) geben, um Projekte noch schneller umsetzen zu k&ouml;nnen.
-</p>
-<p>
-<strong>HINWEIS: Bei einigen Hostinganbietern wie z.B. 1und1, Strato, usw. kann es vorkommen, dass aus Sicherheitsgründen die Funktion file_get_contens nicht funktioniert. Diese wird aber vom SDK genutzt. Um das Problem zu beheben, öffnen Sie bitte die Datei "php.ini" im Ordner "Immocaster" und befolgen Sie die Anweisungen innerhalb der Datei.</strong>
-</p>
-<br />
+  <h1>
+    <a href="http://www.immocaster.com">Immocaster SDK - Beispiele</a>
+  </h1>
+  <p>
+    Das Immocaster SDK unterstützt Entwickler beim Erstellen von PHP-Applikationen mit der Schnittstelle von ImmobilienScout24. Eine
+    ausführliche Dokumentation befindet sich unter <a href="http://immocaster.com/sdk-dokumentation">http://immocaster.com/sdk-dokumentation</a>. Au&szlig;erdem wird es auf der Website <a href="http://www.immocaster.com">www.immocaster.com</a> in Kürze fertige Plugins für verschiedene CMS (z.B. Wordpress, Drupal, Joomla, usw.) geben, um Projekte noch schneller umsetzen zu k&ouml;nnen.
+  </p>
+  <p>
+    <strong>HINWEIS: Bei einigen Hostinganbietern wie z.B. 1und1, Strato, usw. kann es vorkommen, dass aus Sicherheitsgründen die Funktion file_get_contens nicht funktioniert. Diese wird aber vom SDK genutzt. Um das Problem zu beheben, öffnen Sie bitte die Datei "php.ini" im Ordner "Immocaster" und befolgen Sie die Anweisungen innerhalb der Datei.</strong>
+  </p>
+  <br />
 
-<?php
+  <?php
 
-/**
- * Geodaten (Suggestion) ermitteln.
- */
-echo '<h2>GIS - GeoAutoCompletion (GAC) v2 API Suggestion Ressource</h2><br>
+  /**
+   * Geodaten (Suggestion) ermitteln.
+   */
+  echo '<h2>GIS - GeoAutoCompletion (GAC) v2 API Suggestion Ressource</h2><br>
       API Dokumentation: https://api.immobilienscout24.de/our-apis/gis/geoautocompletion-v2.html#suggestion';
-$aParameter = array('country'=>'DEU', // DEU or AUT
-                    'i'=>'Berlin', // input search query
-                    'l'=>'10', // optional, limit max. 50
-                    't'=>'ALL');  // optional, entity types
-$res        = $oImmocaster->getGeoAutocompletionSuggestion($aParameter);
-echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
- 
-/**
- * Geodaten (Entity) ermitteln.
- */
-echo '<h2>GIS - GeoAutocCmpletion (GAC) v2 API Entity Ressource</h2><br>
+  $aParameter = array(
+    'country' => 'DEU', // DEU or AUT
+    'i' => 'Berlin', // input search query
+    'l' => '10', // optional, limit max. 50
+    't' => 'ALL'
+  );  // optional, entity types
+  $res        = $oImmocaster->getGeoAutocompletionSuggestion($aParameter);
+  echo '<div class="codebox"><textarea>' . $res . '</textarea></div>';
+
+  /**
+   * Geodaten (Entity) ermitteln.
+   */
+  echo '<h2>GIS - GeoAutocCmpletion (GAC) v2 API Entity Ressource</h2><br>
       API Dokumentation: https://api.immobilienscout24.de/our-apis/gis/geoautocompletion-v2.html#entity';
-$aParameter = array('country'=>'DEU', // DEU or AUT
-                    'id'=>'1276003001', // The ID of the entity. You get IDs in the result of the suggestion resource.
-                    'g'=>'WGS84'); // optional, GeoCodingType: One of None, GeoId, Lambert, WGS84 (optional)
-$res        = $oImmocaster->getGeoAutocompletionEntity($aParameter);
-echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  $aParameter = array(
+    'country' => 'DEU', // DEU or AUT
+    'id' => '1276003001', // The ID of the entity. You get IDs in the result of the suggestion resource.
+    'g' => 'WGS84'
+  ); // optional, GeoCodingType: One of None, GeoId, Lambert, WGS84 (optional)
+  $res        = $oImmocaster->getGeoAutocompletionEntity($aParameter);
+  echo '<div class="codebox"><textarea>' . $res . '</textarea></div>';
 
-/**
- * Geodaten (Geohierarchy) ermitteln.
- */
-echo '<h2>GIS - Geohierarchy</h2><br>
+  /**
+   * Geodaten (Geohierarchy) ermitteln.
+   */
+  echo '<h2>GIS - Geohierarchy</h2><br>
       API Dokumentation: https://api.immobilienscout24.de/our-apis/gis/geohierarchy.html';
-$aParameter = array('country-id'=>276,'region-id'=>2,'list'=>true);
-$res        = $oImmocaster->geoService($aParameter);
-echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  $aParameter = array('country-id' => 276, 'region-id' => 2, 'list' => true);
+  $res        = $oImmocaster->geoService($aParameter);
+  echo '<div class="codebox"><textarea>' . $res . '</textarea></div>';
 
-/**
- * Ergebnisliste abfragen per Radius.
- */
-echo '<h2>Ergebnisliste abfragen per Radius</h2>';
-$aParameter = array('geocoordinates'=>'52.52546480183439;13.369545936584473;2','realestatetype'=>'apartmentrent');
-$res        = $oImmocaster->radiusSearch($aParameter);
-echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ergebnisliste abfragen per Radius.
+   */
+  echo '<h2>Ergebnisliste abfragen per Radius</h2>';
+  $aParameter = array('geocoordinates' => '52.52546480183439;13.369545936584473;2', 'realestatetype' => 'apartmentrent');
+  $res        = $oImmocaster->radiusSearch($aParameter);
+  echo '<div class="codebox"><textarea>' . $res . '</textarea></div>';
 
-/**
- * Ergebnisliste abfragen per Region.
- */
-echo '<h2>Ergebnisliste abfragen per Region</h2>';
-$aParameter = array('geocodes'=>1276003001,'realestatetype'=>'apartmentrent');
-$res        = $oImmocaster->regionSearch($aParameter);
-echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ergebnisliste abfragen per Region.
+   */
+  echo '<h2>Ergebnisliste abfragen per Region</h2>';
+  $aParameter = array('geocodes' => 1276003001, 'realestatetype' => 'apartmentrent');
+  $res        = $oImmocaster->regionSearch($aParameter);
+  echo '<div class="codebox"><textarea>' . $res . '</textarea></div>';
 
-/**
- * Ergebnisliste mit allen Objekten eines Maklers abfragen.
- */
-echo '<h2>Komplette Ergebnisliste eines Maklers</h2><br/>Diese Funktion wurde auskommentiert, da der Benutzer hierfür die Applikation zertifizieren muss und die Berechtigung von IS24 für diese Funktion benötigt.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME');
-//$res = $oImmocaster->fullUserSearch($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ergebnisliste mit allen Objekten eines Maklers abfragen.
+   */
+  echo '<h2>Komplette Ergebnisliste eines Maklers</h2><br/>Diese Funktion wurde auskommentiert, da der Benutzer hierfür die Applikation zertifizieren muss und die Berechtigung von IS24 für diese Funktion benötigt.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME');
+  //$res = $oImmocaster->fullUserSearch($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Expose über die ID auslesen.
- */
-echo '<h2>Expose per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
-//$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
-//$res        = $oImmocaster->getExpose($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Expose über die ID auslesen.
+   */
+  echo '<h2>Expose per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
+  //$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
+  //$res        = $oImmocaster->getExpose($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Impressum eines Exposes auslesen.
- */
-echo '<h2>Impressum eines Exposes auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
-//$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
-//$res        = $oImmocaster->getExposeImprint($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Impressum eines Exposes auslesen.
+   */
+  echo '<h2>Impressum eines Exposes auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
+  //$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
+  //$res        = $oImmocaster->getExposeImprint($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Attachment auslesen.
- */
-echo '<h2>Attachment auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
-//$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
-//$res        = $oImmocaster->getAttachment($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Attachment auslesen.
+   */
+  echo '<h2>Attachment auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ExposeID benötigt wird.<br/><br/>';
+  //$aParameter = array('exposeid'=>'ID'); // Expose-ID hinterlegen
+  //$res        = $oImmocaster->getAttachment($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Applikation zertifizieren.
- * Zum Beispiel für Applikationen, die nur Objekte des
- * Maklers anzeigen sollen.
- *
- * HINWEIS: Unter IE9 kann es zu Problemen mit der
- *          zertifizierung kommen. Darum sollte für
- *          die Zertifizierung möglichst ein anderer
- *          Browser (z.B. Firefox) genommen werden.
- *
- */
-echo '<h2>Zertifizierung einer Applikation durch den Makler</h2><br/>Diese Funktion wurde auskommentiert!<br/><br/>';
-/*
+  /**
+   * Applikation zertifizieren.
+   * Zum Beispiel für Applikationen, die nur Objekte des
+   * Maklers anzeigen sollen.
+   *
+   * HINWEIS: Unter IE9 kann es zu Problemen mit der
+   *          zertifizierung kommen. Darum sollte für
+   *          die Zertifizierung möglichst ein anderer
+   *          Browser (z.B. Firefox) genommen werden.
+   *
+   */
+  echo '<h2>Zertifizierung einer Applikation durch den Makler</h2><br/>Diese Funktion wurde auskommentiert!<br/><br/>';
+  /*
 $sCertifyURL = 'http://MEINE-AKTUELLE-URL.DE'; // Komplette URL inkl. Parameter auf der das Script eingebunden wird
 if(isset($_GET['main_registration'])||isset($_GET['state']))
 {
@@ -224,99 +262,91 @@ echo '<p>Registrierte Nutzer in der Datenbank: ';
 print_r($oImmocaster->getAllApplicationUsers(array('string'=>true)));
 */
 
-/**
- * Anbieter-Logo auslesen
- */
-echo '<h2>Logo eines Maklers auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME'); // Username hinterlegen (standardmäßig ihr Nutzername, der beim Login verwendet wird)
-//$res        = $oImmocaster->getLogo($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Anbieter-Logo auslesen
+   */
+  echo '<h2>Logo eines Maklers auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME'); // Username hinterlegen (standardmäßig ihr Nutzername, der beim Login verwendet wird)
+  //$res        = $oImmocaster->getLogo($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Ergebnisliste abfragen per Radius (eines einzelnen Kunden/Maklers).
- */
-echo '<h2>Ergebnisliste eines einzelnen Maklers per Radius abfragen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('geocoordinates'=>'52.52546480183439;13.369545936584473;1000','realestatetype'=>'apartmentrent','username'=>'Benutzername','channel'=>'is24 oder hp');
-//$res        = $oImmocaster->radiusSearch($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ergebnisliste abfragen per Radius (eines einzelnen Kunden/Maklers).
+   */
+  echo '<h2>Ergebnisliste eines einzelnen Maklers per Radius abfragen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('geocoordinates'=>'52.52546480183439;13.369545936584473;1000','realestatetype'=>'apartmentrent','username'=>'Benutzername','channel'=>'is24 oder hp');
+  //$res        = $oImmocaster->radiusSearch($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Ergebnisliste abfragen per Region (eines einzelnen Kunden/Maklers).
- */
-echo '<h2>Ergebnisliste eines einzelnen Maklers per Region abfragen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('geocodes'=>1276003001017,'realestatetype'=>'apartmentrent','username'=>'Benutzername','channel'=>'is24 oder hp');
-//$res        = $oImmocaster->regionSearch($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ergebnisliste abfragen per Region (eines einzelnen Kunden/Maklers).
+   */
+  echo '<h2>Ergebnisliste eines einzelnen Maklers per Region abfragen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('geocodes'=>1276003001017,'realestatetype'=>'apartmentrent','username'=>'Benutzername','channel'=>'is24 oder hp');
+  //$res        = $oImmocaster->regionSearch($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Kontakt an Anbieter versenden.
- */
-echo '<h2>Anbieter kontaktieren</h2><br/>';
-echo 'Es kann zu Problemen kommen, wenn die Objekte die kontaktiert werden sollen nicht auf IS24 veröffentlicht sind.<br/>D.h. wenn die Objekte lediglich Homepage-Veröffentlicht sind wird ein Fehler erzeugt.<br/><br />';
-if($_POST['formActionSendContact'])
-{
-	$aParameter = array('exposeid'=>$_POST['contactObjectId']);
-	$res = $oImmocaster->getExpose($aParameter);
-	if(substr_count($res, 'ERROR_RESOURCE_NOT_FOUND')<1)
-	{
-		$sRequestBody = ''; // Infos zum Aufbau unter: http://developerwiki.immobilienscout24.de/wiki/Contact/POST
-		$aContactParameter = array('exposeid'=>$_POST['contactObjectId'],'request_body'=>$sRequestBody);
-		$resContact = $oImmocaster->sendContact($aContactParameter);
-		echo '<strong>'.$resContact.'</strong><br /><br />';
-	}
-	else
-	{
-		echo '<strong>'.$res.'</strong><br /><br />';
-	}
-}
-echo '<form action="'.$SELFPHP.'" method="post" name="sendcontact">';
-echo 'Objekt-ID: <input type="text" name="contactObjectId"><br />';
-echo 'Nachricht: <input type="text" name="contactMsg"><br />';
-echo '<input type="hidden" name="formActionSendContact" value="do"><br />';
-echo '<input type="submit" name="submit" value="Anbieter kontaktieren">';
-echo '</form>';
+  /**
+   * Kontakt an Anbieter versenden.
+   */
+  echo '<h2>Anbieter kontaktieren</h2><br/>';
+  echo 'Es kann zu Problemen kommen, wenn die Objekte die kontaktiert werden sollen nicht auf IS24 veröffentlicht sind.<br/>D.h. wenn die Objekte lediglich Homepage-Veröffentlicht sind wird ein Fehler erzeugt.<br/><br />';
+  if ($_POST['formActionSendContact']) {
+    $aParameter = array('exposeid' => $_POST['contactObjectId']);
+    $res = $oImmocaster->getExpose($aParameter);
+    if (substr_count($res, 'ERROR_RESOURCE_NOT_FOUND') < 1) {
+      $sRequestBody = ''; // Infos zum Aufbau unter: http://developerwiki.immobilienscout24.de/wiki/Contact/POST
+      $aContactParameter = array('exposeid' => $_POST['contactObjectId'], 'request_body' => $sRequestBody);
+      $resContact = $oImmocaster->sendContact($aContactParameter);
+      echo '<strong>' . $resContact . '</strong><br /><br />';
+    } else {
+      echo '<strong>' . $res . '</strong><br /><br />';
+    }
+  }
+  echo '<form action="' . $SELFPHP . '" method="post" name="sendcontact">';
+  echo 'Objekt-ID: <input type="text" name="contactObjectId"><br />';
+  echo 'Nachricht: <input type="text" name="contactMsg"><br />';
+  echo '<input type="hidden" name="formActionSendContact" value="do"><br />';
+  echo '<input type="submit" name="submit" value="Anbieter kontaktieren">';
+  echo '</form>';
 
-/**
- * Objekt weiter empfehlen (an Emailadresse).
- */
-echo '<h2>Objekt empfehlen:</h2><br/>';
-echo 'Es kann zu Problemen kommen, wenn das Objekt nicht auf IS24 veröffentlicht ist.<br/><br/>';
-if($_POST['formActionSendFriend'])
-{
-	$aParameter = array('exposeid'=>$_POST['friendObjectId']);
-	$res = $oImmocaster->getExpose($aParameter);
-	if(substr_count($res, 'ERROR_RESOURCE_NOT_FOUND')<1)
-	{
-		$sRequestBody = ''; // Infos zum Aufbau unter: http://developerwiki.immobilienscout24.de/wiki/SendAFriendForm/POST
-		$aFriendParameter = array('exposeid'=>$_POST['friendObjectId'],'request_body'=>$sRequestBody);
-		$resFriend = $oImmocaster->sendAFriend($aFriendParameter);
-		echo '<strong>'.$resFriend.'</strong><br /><br />';
-	}
-	else
-	{
-		echo '<strong>'.$res.'</strong><br /><br />';
-	}
-}
-echo '<form action="'.$SELFPHP.'" method="post" name="sendafriend">';
-echo 'Objekt-ID: <input type="text" name="friendObjectId"><br />';
-echo 'Email-Adresse: <input type="text" name="friendEmail"><br />';
-echo '<input type="hidden" name="formActionSendFriend" value="do"><br />';
-echo '<input type="submit" name="submit" value="Objekt empfehlen">';
-echo '</form>';
+  /**
+   * Objekt weiter empfehlen (an Emailadresse).
+   */
+  echo '<h2>Objekt empfehlen:</h2><br/>';
+  echo 'Es kann zu Problemen kommen, wenn das Objekt nicht auf IS24 veröffentlicht ist.<br/><br/>';
+  if ($_POST['formActionSendFriend']) {
+    $aParameter = array('exposeid' => $_POST['friendObjectId']);
+    $res = $oImmocaster->getExpose($aParameter);
+    if (substr_count($res, 'ERROR_RESOURCE_NOT_FOUND') < 1) {
+      $sRequestBody = ''; // Infos zum Aufbau unter: http://developerwiki.immobilienscout24.de/wiki/SendAFriendForm/POST
+      $aFriendParameter = array('exposeid' => $_POST['friendObjectId'], 'request_body' => $sRequestBody);
+      $resFriend = $oImmocaster->sendAFriend($aFriendParameter);
+      echo '<strong>' . $resFriend . '</strong><br /><br />';
+    } else {
+      echo '<strong>' . $res . '</strong><br /><br />';
+    }
+  }
+  echo '<form action="' . $SELFPHP . '" method="post" name="sendafriend">';
+  echo 'Objekt-ID: <input type="text" name="friendObjectId"><br />';
+  echo 'Email-Adresse: <input type="text" name="friendEmail"><br />';
+  echo '<input type="hidden" name="formActionSendFriend" value="do"><br />';
+  echo '<input type="submit" name="submit" value="Objekt empfehlen">';
+  echo '</form>';
 
-/**
- * Ermittelt die Kanäle (Channels) in die ein zertifizierter Benutzer Objekte exportieren darf
- */
-echo '<h2>Export-Channels für den User:</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME'); // Benutzername ('me' ist hier nicht zulässig!)
-//$res        = $oImmocaster->getPublishChannel($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ermittelt die Kanäle (Channels) in die ein zertifizierter Benutzer Objekte exportieren darf
+   */
+  echo '<h2>Export-Channels für den User:</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME'); // Benutzername ('me' ist hier nicht zulässig!)
+  //$res        = $oImmocaster->getPublishChannel($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Objekt zu ImmobilienScout24 exportieren / Objekt ändern
- */
-echo '<h2>Objekt exportieren und &auml;ndern</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*
+  /**
+   * Objekt zu ImmobilienScout24 exportieren / Objekt ändern
+   */
+  echo '<h2>Objekt exportieren und &auml;ndern</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*
 $aParameter = array(
 	'username' => 'me',
 	'service' => 'immobilienscout',
@@ -344,24 +374,24 @@ print_r($oImmocaster->exportObject($aParameter)); // Objekt exportieren
 print_r($oImmocaster->changeObject($aParameter)); // Objekt &auml;ndern
 */
 
-/**
- * Ruft ein Objekte eines Maklers unabhängig von der Veröffentlichung ab
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/realestate/get-by-id.html
- */
-echo '<h2>Objekt eines Maklers per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'**','exposeid'=>'**' /*ScoutID oder ext-ObjektNr*/);
-//$res        = $oImmocaster->getUserExpose($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ruft ein Objekte eines Maklers unabhängig von der Veröffentlichung ab
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/realestate/get-by-id.html
+   */
+  echo '<h2>Objekt eines Maklers per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'**','exposeid'=>'**' /*ScoutID oder ext-ObjektNr*/);
+  //$res        = $oImmocaster->getUserExpose($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Den Typ des Attachments gibt man mit 'type' an: 'Picture', 'PDFDocument' oder 'Link'
- * Attachment (Bild, PDF oder Link) zu einem Objekt hochladen
- * Wird ein Bild oder ein PDF hochgeladen, benötigt die Funktion den Parameter 'file' mit entsprechendem Dateipfad.
- * Beim Upload eines Links wird der Parameter 'url' übergeben.
- * Das Setzen der externalId ist freiwillig
- */
-echo '<h2>Attachment (Bild, PDF, Link) hochladen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*
+  /**
+   * Den Typ des Attachments gibt man mit 'type' an: 'Picture', 'PDFDocument' oder 'Link'
+   * Attachment (Bild, PDF oder Link) zu einem Objekt hochladen
+   * Wird ein Bild oder ein PDF hochgeladen, benötigt die Funktion den Parameter 'file' mit entsprechendem Dateipfad.
+   * Beim Upload eines Links wird der Parameter 'url' übergeben.
+   * Das Setzen der externalId ist freiwillig
+   */
+  echo '<h2>Attachment (Bild, PDF, Link) hochladen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*
 $aParameter = array(
   'username' => 'USERNAME',
   'estateid' => 'ESTATEID', //ID des Objektes
@@ -375,28 +405,28 @@ $res = $oImmocaster->exportObjectAttachment($aParameter);
 echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 */
 
-/**
- * Attachments eines Objektes abrufen
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/get-all.html
- */
-echo '<h2>Attachments eines Objektes abrufen.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','estateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/);
-//$res        = $oImmocaster->getObjectAttachments($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Attachments eines Objektes abrufen
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/get-all.html
+   */
+  echo '<h2>Attachments eines Objektes abrufen.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','estateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/);
+  //$res        = $oImmocaster->getObjectAttachments($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Objektbild entfernen
- */
-echo '<h2>Objektbild entfernen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('attachmentid' => 'ATTACHMENTID' /*ID des Bildes*/, 'estateid' => 'ESTATEID' /*ID des Objekts*/ );
-//$res = $oImmocaster->deleteObjectAttachment($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Objektbild entfernen
+   */
+  echo '<h2>Objektbild entfernen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('attachmentid' => 'ATTACHMENTID' /*ID des Bildes*/, 'estateid' => 'ESTATEID' /*ID des Objekts*/ );
+  //$res = $oImmocaster->deleteObjectAttachment($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Objekt aktivieren
- */
-echo '<h2>Objekt aktivieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*
+  /**
+   * Objekt aktivieren
+   */
+  echo '<h2>Objekt aktivieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*
 $aParameter = array(
 	'exposeid' => 'ESTATEID', // Id des Objekts
 	'channelid' => '10001' // 10000 = IS24, 10001 = Homepage
@@ -404,11 +434,11 @@ $aParameter = array(
 print_r($oImmocaster->enableObject($aParameter));
 */
 
-/**
- * Objekt deaktivieren
- */
-echo '<h2>Objekt deaktivieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*
+  /**
+   * Objekt deaktivieren
+   */
+  echo '<h2>Objekt deaktivieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*
 $aParameter = array(
 	'exposeid' => 'ESTATEID', // Id des Objekts
 	'channelid' => '10001' // 10000 = IS24, 10001 = Homepage
@@ -416,20 +446,20 @@ $aParameter = array(
 print_r($oImmocaster->disableObject($aParameter));
 */
 
-/**
- * Objekt entfernen
- */
-echo '<h2>Objekt entfernen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username' => 'USERNAME', 'estateid' => 'ESTATEID' /*ID des Objekts*/ );
-//$res = $oImmocaster->deleteObject($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Objekt entfernen
+   */
+  echo '<h2>Objekt entfernen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username' => 'USERNAME', 'estateid' => 'ESTATEID' /*ID des Objekts*/ );
+  //$res = $oImmocaster->deleteObject($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Erstellt/Aktualisiert eine Kontaktadresse im Account des Maklers
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/post.html
- */
-echo '<h2>Erstellen/Aktualisieren von Kontaktadresse im Makleraccount</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*$aParameter =
+  /**
+   * Erstellt/Aktualisiert eine Kontaktadresse im Account des Maklers
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/post.html
+   */
+  echo '<h2>Erstellen/Aktualisieren von Kontaktadresse im Makleraccount</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*$aParameter =
 array(
     'username'=>'USERNAME',
   //'contactid'=>'CONTACTID', NUR FÜR AKTUALISIERUNG NOTWENDIG!!! id oder ext-externalId
@@ -468,34 +498,34 @@ array(
     <externalId>bestMan</externalId>
 </common:realtorContactDetail>'
 ));*/
-//$res        = $oImmocaster->exportContact($aParameter);
-//$res        = $oImmocaster->changeContact($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  //$res        = $oImmocaster->exportContact($aParameter);
+  //$res        = $oImmocaster->changeContact($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Ruft eine Kontaktadresse (Contact) eines Maklers ab
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/get-by-id.html
- */
-echo '<h2>Kontaktadresse eines Maklers per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','contactid'=>'CONTACTID' /*id oder externalId*/);
-//$res        = $oImmocaster->getContact($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ruft eine Kontaktadresse (Contact) eines Maklers ab
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/get-by-id.html
+   */
+  echo '<h2>Kontaktadresse eines Maklers per ID auslesen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','contactid'=>'CONTACTID' /*id oder externalId*/);
+  //$res        = $oImmocaster->getContact($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Löscht eine Kontaktadresse (Contact) eines Maklers
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html
- */
-echo '<h2>Kontaktadresse eines Maklers löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','contactid'=>'CONTACTID' /*id oder externalId*/);
-//$res        = $oImmocaster->deleteContact($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Löscht eine Kontaktadresse (Contact) eines Maklers
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html
+   */
+  echo '<h2>Kontaktadresse eines Maklers löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','contactid'=>'CONTACTID' /*id oder externalId*/);
+  //$res        = $oImmocaster->deleteContact($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Liste von Objekten OnTop platzieren
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/post-by-list.html
- */
-echo '<h2>Liste von Objekten OnTop platzieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*$aParameter =
+  /**
+   * Liste von Objekten OnTop platzieren
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/post-by-list.html
+   */
+  echo '<h2>Liste von Objekten OnTop platzieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*$aParameter =
 array(
     'username'=>'USERNAME',
     'ontopplacementtype'=>'ONTOPPLACEMENTTYPE', //topplacement, premiumplacement oder showcaseplacement
@@ -511,70 +541,70 @@ array(
 $res        = $oImmocaster->postbylistOntopplacement($aParameter);
 echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';*/
 
-/**
- * Ein Objekt OnTop platzieren
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/post-by-id.html
- */
-echo '<h2>Ein Objekt OnTop platzieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->postbyidOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Ein Objekt OnTop platzieren
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/post-by-id.html
+   */
+  echo '<h2>Ein Objekt OnTop platzieren</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->postbyidOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Alle OnTop Platzierungen abrufen
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/get-all.html
- */
-echo '<h2>Alle OnTop Platzierungen abrufen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->getallOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Alle OnTop Platzierungen abrufen
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/get-all.html
+   */
+  echo '<h2>Alle OnTop Platzierungen abrufen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->getallOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * OnTop Platzierung eines Objektes abrufen
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/get-by-id.html
- */
-echo '<h2>OnTop Platzierung eines Objektes abrufen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->getbyidOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * OnTop Platzierung eines Objektes abrufen
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/get-by-id.html
+   */
+  echo '<h2>OnTop Platzierung eines Objektes abrufen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->getbyidOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Alle OnTop Platzierungen löschen
- * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-all.html
- */
-echo '<h2>Alle OnTop Platzierungen löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->deleteallOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Alle OnTop Platzierungen löschen
+   * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-all.html
+   */
+  echo '<h2>Alle OnTop Platzierungen löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->deleteallOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Eine OnTop Platzierung löschen
- * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-by-id.html
- */
-echo '<h2>Eine OnTop Platzierung löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->deletebyidOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Eine OnTop Platzierung löschen
+   * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-by-id.html
+   */
+  echo '<h2>Eine OnTop Platzierung löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','realestateid'=>'REALESTATEID' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->deletebyidOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Liste von OnTop Platzierungen löschen
- * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-by-list.html
- */
-echo '<h2>Liste von OnTop Platzierungen löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','realestateids'=>'REALESTATEID1,REALESTATEID2,..' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
-//$res        = $oImmocaster->deletebylistOntopplacement($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Liste von OnTop Platzierungen löschen
+   * http://api.immobilienscout24.de/our-apis/import-export/ontop-placement/delete-by-list.html
+   */
+  echo '<h2>Liste von OnTop Platzierungen löschen</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','realestateids'=>'REALESTATEID1,REALESTATEID2,..' /*ScoutID oder ext-ObjektNr*/,'ontopplacementtype'=>'ONTOPPLACEMENTTYPE' /*topplacement, premiumplacement oder showcaseplacement*/);
+  //$res        = $oImmocaster->deletebylistOntopplacement($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Ein Video (Streaming) zu einem Objekt hochladen
- * 1. Video Upload Ticket von ImmobilienScout24 erhalten
- * 2. Video bei picesearch hochladen
- * 3. Video von picsearch zu Objekt von ImmobilienScout24 referenzieren
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html
- *
- */
-echo '<h2>Ein Video zu einem Objekt hochladen (3 Schritte).<br/><br/>';
-/*$aParameter = array ('username'=>'USERNAME', 'file' => 'LOCATION', 'estateid' => 'ESTATEID', 'title' => 'TITLE');
+  /**
+   * Ein Video (Streaming) zu einem Objekt hochladen
+   * 1. Video Upload Ticket von ImmobilienScout24 erhalten
+   * 2. Video bei picesearch hochladen
+   * 3. Video von picsearch zu Objekt von ImmobilienScout24 referenzieren
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html
+   *
+   */
+  echo '<h2>Ein Video zu einem Objekt hochladen (3 Schritte).<br/><br/>';
+  /*$aParameter = array ('username'=>'USERNAME', 'file' => 'LOCATION', 'estateid' => 'ESTATEID', 'title' => 'TITLE');
 $ticket        = $oImmocaster->getVideoUploadTicket($aParameter);
     $xml = new SimpleXMLElement($ticket);
     $auth   = (string) $xml->auth[0];
@@ -592,25 +622,25 @@ $postAttachment = $oImmocaster->exportObjectVideoAttachment($aParameter);
 echo '<h5>3. Bei ImmobilienScout24 Video von picsearch verknüpfen (POST Attachment@IS24).<br/><br/>';
 echo '<div class="codebox"><textarea>'.$postAttachment.'</textarea></div>';*/
 
-/**
- * Attachmentreihenfolge eines Objektes über die ObjektID auslesen.
- * Es werden nur Bilder und PDFs betrachtet.
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-get.html
- *
- */
-echo '<h2>Attachmentsreihenfolge eines Objektes über die ID auslesen.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ObjektNr benötigt wird.<br/><br/>';
-//$aParameter = array('username'=>'USERNAME','estateid'=>'ESTATEID' /*ScoutID oder ext-ObjektNr*/);
-//$res        = $oImmocaster->getObjectAttachmentsorder($aParameter);
-//echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
+  /**
+   * Attachmentreihenfolge eines Objektes über die ObjektID auslesen.
+   * Es werden nur Bilder und PDFs betrachtet.
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-get.html
+   *
+   */
+  echo '<h2>Attachmentsreihenfolge eines Objektes über die ID auslesen.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine aktuelle ObjektNr benötigt wird.<br/><br/>';
+  //$aParameter = array('username'=>'USERNAME','estateid'=>'ESTATEID' /*ScoutID oder ext-ObjektNr*/);
+  //$res        = $oImmocaster->getObjectAttachmentsorder($aParameter);
+  //echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';
 
-/**
- * Attachmentreihenfolge eines Objektes ändern.
- * Es werden nur Bilder und PDFs betrachtet.
- * Es ist im SDK möglich den XML Part direkt weiterzugeben oder sortierte Liste von ESTATEIDs.
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html
- */
-echo '<h2>Attachmentsreihenfolge eines Objektes über die ID ändern.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*$aParameter =
+  /**
+   * Attachmentreihenfolge eines Objektes ändern.
+   * Es werden nur Bilder und PDFs betrachtet.
+   * Es ist im SDK möglich den XML Part direkt weiterzugeben oder sortierte Liste von ESTATEIDs.
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html
+   */
+  echo '<h2>Attachmentsreihenfolge eines Objektes über die ID ändern.</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*$aParameter =
 array(
     'username'=>'USERNAME',
     'estateid'=>'ESTATEID',
@@ -626,13 +656,13 @@ array(
 $res        = $oImmocaster->changeObjectAttachmentsorder($aParameter);
 echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';*/
 
-/**
- * Aktualisierern eines Attachments (Bild, Video, PDF oder URL).
- * Bitte beachten, dass dabei nur die Metadaten verändert werden können, nicht das Bild an sich.
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html
- */
-echo '<h2>Aktualisieren eines Attachments</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*$aParameter =
+  /**
+   * Aktualisierern eines Attachments (Bild, Video, PDF oder URL).
+   * Bitte beachten, dass dabei nur die Metadaten verändert werden können, nicht das Bild an sich.
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html
+   */
+  echo '<h2>Aktualisieren eines Attachments</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*$aParameter =
 array(
     'username'=>'USERNAME',
     'estateid'=>'ESTATEID',
@@ -647,12 +677,12 @@ array(
 $res        = $oImmocaster->changeObjectAttachment($aParameter);
 echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';*/
 
-/**
- * Ermittelt die Publishchannels eines Objektes
- * API Doku: http://api.immobilienscout24.de/our-apis/import-export/publish/get.html
- */
-echo '<h2>Publishchannels eines Objektes:</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
-/*$aParameter = array(
+  /**
+   * Ermittelt die Publishchannels eines Objektes
+   * API Doku: http://api.immobilienscout24.de/our-apis/import-export/publish/get.html
+   */
+  echo '<h2>Publishchannels eines Objektes:</h2><br/>Diese Funktion wurde auskommentiert, da dafür eine Zertifizierung nötig ist.<br/><br/>';
+  /*$aParameter = array(
   'username'=>'USERNAME',
   'realestate'=>'ESTATEID' // ScoutID
  // 'publishchannel'=>'10000' // optional: 10000=IS24, 10001=HP
@@ -660,6 +690,7 @@ echo '<h2>Publishchannels eines Objektes:</h2><br/>Diese Funktion wurde auskomme
 $res        = $oImmocaster->getPublish($aParameter);
 echo '<div class="codebox"><textarea>'.$res.'</textarea></div>';*/
 
-?>
+  ?>
 </body>
+
 </html>

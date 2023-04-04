@@ -11,7 +11,7 @@
 
 class Immocaster_Tools_Helper
 {
-	
+
 	/*
 	 * Aus einem String wird ein Array erzeugt.
 	 *
@@ -19,15 +19,13 @@ class Immocaster_Tools_Helper
 	 * @param array
 	 * @return mixed
 	 */
-	public static function makeArrayFromString($sString='',$aReturn=array())
+	public static function makeArrayFromString($sString = '', $aReturn = array())
 	{
-		$res = explode('&',$sString);
-		foreach($res as $sVar)
-		{
-			$aVar = explode('=',$sVar);
+		$res = explode('&', $sString);
+		foreach ($res as $sVar) {
+			$aVar = explode('=', $sVar);
 			$aReturn[$aVar[0]] = $aVar[1];
 		}
 		return $aReturn;
 	}
-	
 }
